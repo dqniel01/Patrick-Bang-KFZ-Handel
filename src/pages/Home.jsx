@@ -74,7 +74,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
           <div className="w-full">
-            <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1.05] mb-10 whitespace-nowrap">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.05] mb-10">
               {t('home.headline')}
             </h1>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -162,8 +162,8 @@ export default function Home() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100">
-            {featuredCar && <CarCard car={featuredCar} featured />}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {featuredCar && <CarCard car={featuredCar} />}
             {otherCars.map((car) => <CarCard key={car.id} car={car} />)}
           </div>
 

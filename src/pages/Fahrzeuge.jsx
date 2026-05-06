@@ -9,7 +9,7 @@ export default function Fahrzeuge() {
   const { listings, loading, fromApi, fromScrape } = useListings()
   const [fuel, setFuel] = useState('Alle')
   const [make, setMake] = useState('Alle')
-  const [view, setView] = useState('cards')
+  const [view, setView] = useState('embed')
 
   const FUEL_OPTIONS = [
     { key: 'all', value: 'Alle' },
@@ -154,7 +154,7 @@ export default function Fahrzeuge() {
               ) : (
                 <>
                   <p className="text-xs text-gray-400 mb-6">{t('vehicles.count', { count: filtered.length })}</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {filtered.map((car) => <CarCard key={car.id} car={car} />)}
                   </div>
                 </>
