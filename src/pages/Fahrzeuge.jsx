@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import CarCard from '../components/CarCard'
 import { DEALER_LINK, EMBED_URL } from '../services/autoscout'
@@ -10,6 +10,13 @@ export default function Fahrzeuge() {
   const [fuel, setFuel] = useState('Alle')
   const [make, setMake] = useState('Alle')
   const [view, setView] = useState('embed')
+  const [cookieConsent, setCookieConsent] = useState(localStorage.getItem('cookie_consent'))
+
+  useEffect(() => {
+    const handler = () => setCookieConsent(localStorage.getItem('cookie_consent'))
+    window.addEventListener('storage', handler)
+    return () => window.removeEventListener('storage', handler)
+  }, [])
 
   const FUEL_OPTIONS = [
     { key: 'all', value: 'Alle' },
@@ -188,22 +195,39 @@ export default function Fahrzeuge() {
               <div className="w-2 h-2 rounded-full bg-green-500" />
               <p className="text-xs text-gray-500">{t('vehicles.embed_live')}</p>
             </div>
-            <div className="bg-white border border-gray-100 overflow-hidden">
-              <iframe
-                src={EMBED_URL}
-                title="Fahrzeuge von Patrick Bang KFZ-Handel auf AutoScout24"
-                width="100%"
-                height="1200"
-                frameBorder="0"
-                scrolling="auto"
-                loading="lazy"
-                className="w-full"
-              />
-            </div>
-            <p className="mt-3 text-xs text-gray-400 text-center">
-              {t('vehicles.embed_source')}{' '}
-              <a href={DEALER_LINK} target="_blank" rel="noopener noreferrer" className="underline">autoscout24.de</a>
-            </p>
+
+            {cookieConsent === 'accepted' ? (
+              <>
+                <div className="bg-white border border-gray-100 overflow-hidden">
+                  <iframe
+                    src={EMBED_URL}
+                    title="Fahrzeuge von Patrick Bang KFZ-Handel auf AutoScout24"
+                    width="100%"
+                    height="1200"
+                    frameBorder="0"
+                    scrolling="auto"
+                    loading="lazy"
+                    className="w-full"
+                  />
+                </div>
+                <p className="mt-3 text-xs text-gray-400 text-center">
+                  {t('vehicles.embed_source')}{' '}
+                  <a href={DEALER_LINK} target="_blank" rel="noopener noreferrer" className="underline">autoscout24.de</a>
+                </p>
+              </>
+            ) : (
+              <div className="bg-white border border-gray-200 p-12 text-center">
+                <p className="text-gray-500 text-sm mb-4">{t('cookies.iframe_blocked')}</p>
+                <a
+                  href={DEALER_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-900 text-white text-sm font-semibold hover:bg-gray-700 transition-colors"
+                >
+                  {t('vehicles.open_as24')}
+                </a>
+              </div>
+            )}
           </div>
         </section>
       )}

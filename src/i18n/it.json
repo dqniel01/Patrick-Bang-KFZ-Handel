@@ -127,6 +127,13 @@
     "imprint": "Note legali",
     "privacy": "Privacy"
   },
+  "cookies": {
+    "text": "Utilizziamo i cookie per integrare contenuti di terze parti (AutoScout24) e salvare le preferenze linguistiche. Ulteriori informazioni nella nostra",
+    "privacy_link": "informativa sulla privacy",
+    "accept": "Accetta",
+    "decline": "Rifiuta",
+    "iframe_blocked": "Accetta i cookie per caricare la vista AutoScout24."
+  },
   "car": {
     "year": "Anno",
     "mileage": "Chilometraggio",
