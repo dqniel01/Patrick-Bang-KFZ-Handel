@@ -94,12 +94,12 @@ function mapTransmission(raw) {
 }
 
 /**
- * Ruft Inserate vom lokalen Scraper-Proxy ab (server/scrape.js).
- * Benötigt: npm run dev:full (oder node server/scrape.js in zweitem Terminal)
+ * Ruft Inserate von der Netlify Function ab (netlify/functions/listings.js).
+ * Funktioniert sowohl auf Netlify als auch lokal (via netlify dev).
  */
 export async function fetchScrapedListings() {
-  const response = await fetch('/api/listings', { method: 'GET' })
-  if (!response.ok) throw new Error(`Scraper-Server antwortet nicht (${response.status})`)
+  const response = await fetch('/.netlify/functions/listings', { method: 'GET' })
+  if (!response.ok) throw new Error(`Netlify Function antwortet nicht (${response.status})`)
   const data = await response.json()
   if (data.error) throw new Error(data.error)
   const listings = data.listings ?? []
