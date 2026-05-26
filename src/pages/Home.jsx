@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import CarCard from '../components/CarCard'
 import { DEALER_LINK } from '../services/autoscout'
 import { useListings } from '../hooks/useListings'
-import heroAudi from '../assets/hero-audi.png'
+import heroAudi from '../assets/Logo.PNG'
 
 const reviews = [
   {
