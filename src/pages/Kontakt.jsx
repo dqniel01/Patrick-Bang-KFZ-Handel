@@ -6,15 +6,32 @@ export default function Kontakt() {
   const { t } = useTranslation()
   const [form, setForm] = useState({ name: '', telefon: '', email: '', fahrzeug: '', nachricht: '', datenschutz: false })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     setForm((f) => ({ ...f, [name]: type === 'checkbox' ? checked : value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSending(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error ?? 'Unbekannter Fehler')
+      setSubmitted(true)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -135,8 +152,18 @@ export default function Kontakt() {
                       })}
                     </label>
                   </div>
-                  <button type="submit" className="w-full py-3 bg-gray-900 text-white font-semibold text-sm hover:bg-gray-800 transition-colors">
-                    {t('contact.submit')}
+                  {error && (
+                    <p className="text-red-600 text-xs bg-red-50 border border-red-200 px-4 py-2">
+                      {error}
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="w-full py-3 bg-gray-900 text-white font-semibold text-sm hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {sending && <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />}
+                    {sending ? '...' : t('contact.submit')}
                   </button>
                 </form>
               </>

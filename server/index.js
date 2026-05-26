@@ -16,10 +16,21 @@ import http          from 'http'
 import fs            from 'fs'
 import path          from 'path'
 import busboy        from 'busboy'
+import nodemailer    from 'nodemailer'
 import { scrapeListings } from './scrape.js'
 
 const PORT         = process.env.PORT ?? 3001
 const PASSWORD     = process.env.UPLOAD_PASSWORD
+const MAIL_USER    = process.env.MAIL_USER
+const MAIL_PASS    = process.env.MAIL_PASS
+
+// Nodemailer – iCloud SMTP
+const mailer = nodemailer.createTransport({
+  host: 'smtp.mail.me.com',
+  port: 587,
+  secure: false,
+  auth: { user: MAIL_USER, pass: MAIL_PASS },
+})
 const UPLOADS_DIR  = path.join(import.meta.dirname, 'uploads')
 const GALLERY_DIR  = path.join(UPLOADS_DIR, 'gallery')
 const DIST_DIR     = path.join(import.meta.dirname, '..', 'dist')
@@ -204,6 +215,62 @@ function handleUpload(req, res) {
 }
 
 // ---------------------------------------------------------------------------
+// Handler: POST /api/contact
+// ---------------------------------------------------------------------------
+
+function handleContact(req, res) {
+  if (!MAIL_USER || !MAIL_PASS) {
+    return json(res, 500, { error: 'E-Mail nicht konfiguriert. MAIL_USER und MAIL_PASS in .env setzen.' })
+  }
+
+  let body = ''
+  req.on('data', chunk => { body += chunk })
+  req.on('end', async () => {
+    try {
+      const { name, email, telefon, fahrzeug, nachricht } = JSON.parse(body)
+
+      if (!name || !email || !nachricht) {
+        return json(res, 400, { error: 'Name, E-Mail und Nachricht sind Pflichtfelder.' })
+      }
+
+      await mailer.sendMail({
+        from: `"Patrick Bang KFZ-Handel" <${MAIL_USER}>`,
+        to: MAIL_USER,
+        replyTo: email,
+        subject: fahrzeug
+          ? `Anfrage zu: ${fahrzeug} – von ${name}`
+          : `Kontaktanfrage von ${name}`,
+        text: [
+          `Name:      ${name}`,
+          `E-Mail:    ${email}`,
+          `Telefon:   ${telefon || '–'}`,
+          `Fahrzeug:  ${fahrzeug || '–'}`,
+          '',
+          'Nachricht:',
+          nachricht,
+        ].join('\n'),
+        html: `
+          <table style="font-family:sans-serif;font-size:14px;color:#222;border-collapse:collapse">
+            <tr><td style="padding:4px 12px 4px 0;color:#888">Name</td><td><strong>${name}</strong></td></tr>
+            <tr><td style="padding:4px 12px 4px 0;color:#888">E-Mail</td><td><a href="mailto:${email}">${email}</a></td></tr>
+            <tr><td style="padding:4px 12px 4px 0;color:#888">Telefon</td><td>${telefon || '–'}</td></tr>
+            <tr><td style="padding:4px 12px 4px 0;color:#888">Fahrzeug</td><td>${fahrzeug || '–'}</td></tr>
+          </table>
+          <hr style="margin:16px 0;border:none;border-top:1px solid #eee"/>
+          <p style="font-family:sans-serif;font-size:14px;white-space:pre-wrap">${nachricht.replace(/</g,'&lt;')}</p>
+        `,
+      })
+
+      console.log(`[Kontakt] E-Mail von ${name} <${email}> gesendet.`)
+      json(res, 200, { ok: true })
+    } catch (err) {
+      console.error('[Kontakt] Fehler:', err.message)
+      json(res, 500, { error: 'E-Mail konnte nicht gesendet werden.' })
+    }
+  })
+}
+
+// ---------------------------------------------------------------------------
 // Handler: GET /api/gallery
 // ---------------------------------------------------------------------------
 
@@ -256,6 +323,10 @@ const server = http.createServer(async (req, res) => {
       console.error('[Scraper]', err.message)
       return json(res, 500, { error: err.message })
     }
+  }
+
+  if (p === '/api/contact' && req.method === 'POST') {
+    return handleContact(req, res)
   }
 
   if (p === '/api/gallery' && req.method === 'GET') {
