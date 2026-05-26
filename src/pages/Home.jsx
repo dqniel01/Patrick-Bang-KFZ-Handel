@@ -60,10 +60,10 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-end pb-6 text-white overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative min-h-screen flex items-end pb-6 text-white overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-black">
           <img src={heroBg} alt="Bang KFZ Handel" className="w-full h-full object-contain" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
