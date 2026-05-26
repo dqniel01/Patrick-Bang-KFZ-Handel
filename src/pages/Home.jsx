@@ -62,7 +62,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-screen flex items-end pb-6 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroBg} alt="Audi" className="w-full h-full object-cover" />
+          <img src={heroBg} alt="Bang KFZ Handel" className="w-full h-full object-contain" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         </div>
 
