@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import CarCard from '../components/CarCard'
@@ -55,13 +55,7 @@ export default function Home() {
     { value: '0 km', label: t('home.stats.quality') },
   ]
 
-  const [heroBg, setHeroBg] = useState(heroAudi)
-  useEffect(() => {
-    fetch('/api/hero')
-      .then(r => r.ok ? r.json() : null)
-      .then(d => { if (d?.url) setHeroBg(d.url) })
-      .catch(() => {})
-  }, [])
+  const heroBg = heroAudi
 
   return (
     <>

@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DEALER_LINK } from '../services/autoscout'
 
+// Alle Bilder aus src/assets/gallery/ werden automatisch eingebunden.
+// Neue Bilder einfach in diesen Ordner auf GitHub hochladen → Website aktualisiert sich automatisch.
+const galleryModules = import.meta.glob('../assets/gallery/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true })
+const galleryImages = Object.entries(galleryModules).map(([path, mod]) => ({
+  url: mod.default,
+  name: path.split('/').pop(),
+}))
+
 export default function Historie() {
   const { t } = useTranslation()
-  const [images, setImages] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('/api/gallery')
-      .then(r => r.ok ? r.json() : { images: [] })
-      .then(d => { setImages(d.images ?? []); setLoading(false) })
-      .catch(() => setLoading(false))
-  }, [])
+  const images = galleryImages
 
   return (
     <>
@@ -26,14 +25,8 @@ export default function Historie() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          {loading && (
-            <div className="flex justify-center items-center py-32 text-gray-400 gap-3">
-              <div className="w-4 h-4 border border-gray-300 border-t-transparent rounded-full animate-spin" />
-              <span className="text-sm">{t('history.loading')}</span>
-            </div>
-          )}
 
-          {!loading && images.length === 0 && (
+          {images.length === 0 && (
             <div className="text-center py-32">
               <div className="w-16 h-16 bg-gray-100 flex items-center justify-center mx-auto mb-5">
                 <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,18 +35,23 @@ export default function Historie() {
               </div>
               <p className="text-gray-400 text-sm mb-2">{t('history.empty')}</p>
               <p className="text-gray-300 text-xs">
-                {t('history.empty_hint', { link: <a href="/upload" className="underline hover:text-gray-600">/upload</a> })}
+                Bilder in <code className="bg-gray-100 px-1">src/assets/gallery/</code> auf GitHub hochladen.
               </p>
             </div>
           )}
 
-          {!loading && images.length > 0 && (
+          {images.length > 0 && (
             <>
               <p className="text-xs text-gray-400 mb-8">{t('history.count', { count: images.length })}</p>
               <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
                 {images.map(({ url, name }) => (
                   <div key={name} className="break-inside-avoid overflow-hidden group relative bg-gray-100">
-                    <img src={url} alt={name} loading="lazy" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img
+                      src={url}
+                      alt={name}
+                      loading="lazy"
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                   </div>
                 ))}

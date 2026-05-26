@@ -19,13 +19,19 @@ export default function Kontakt() {
     setSending(true)
     setError(null)
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          name: form.name,
+          email: form.email,
+          telefon: form.telefon,
+          fahrzeug: form.fahrzeug,
+          nachricht: form.nachricht,
+        }).toString(),
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error ?? 'Unbekannter Fehler')
+      if (!res.ok) throw new Error('Senden fehlgeschlagen')
       setSubmitted(true)
     } catch (err) {
       setError(err.message)

@@ -8,6 +8,15 @@
     <title>Patrick Bang KFZ-Handel – Hochwertige Fahrzeuge</title>
   </head>
   <body>
+    <!-- Netlify Forms Bot-Erkennung -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="telefon" />
+      <input type="text" name="fahrzeug" />
+      <textarea name="nachricht"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
