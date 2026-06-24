@@ -29,7 +29,7 @@
     "reviews_sub": "Avis AutoScout24",
     "reviews_link": "Lire tous les avis sur AutoScout24",
     "cta_title": "Intéressé ?",
-    "cta_text": "Contactez-moi directement – je réponds à toutes les questions de manière personnelle et simple.",
+    "cta_text": "Contactez-nous directement – nous répondons à toutes les questions de manière personnelle et simple.",
     "cta_contact": "Prendre contact",
     "cta_open": "Ouvrir AutoScout24"
   },
@@ -64,29 +64,29 @@
     }
   },
   "about": {
-    "sub": "Qui je suis",
-    "title": "À propos",
-    "values_sub": "Ce qui me distingue",
-    "values_title": "Mes principes",
+    "sub": "Qui nous sommes",
+    "title": "À propos de nous",
+    "values_sub": "Ce qui nous distingue",
+    "values_title": "Nos principes",
     "values": {
       "transparency": { "title": "Transparence", "desc": "Tous les véhicules sont décrits honnêtement et complètement. Pas de défauts cachés, pas de surprises." },
       "quality": { "title": "Qualité", "desc": "Uniquement des véhicules soigneusement sélectionnés et vérifiés – de préférence des véhicules de l'année avec un faible kilométrage." },
-      "contact": { "title": "Contact personnel", "desc": "Vous parlez directement avec moi, pas avec un centre d'appels anonyme. Les questions reçoivent des réponses ouvertes et honnêtes." },
-      "price": { "title": "Prix équitables", "desc": "Des prix de marché sans exagération. Ce que je propose est proportionnel à la qualité du véhicule." }
+      "contact": { "title": "Contact personnel", "desc": "Vous parlez directement avec nous, pas avec un centre d'appels anonyme. Les questions reçoivent des réponses ouvertes et honnêtes." },
+      "price": { "title": "Prix équitables", "desc": "Des prix de marché sans exagération. Ce que nous proposons est proportionnel à la qualité du véhicule." }
     },
-    "as24_sub": "Ma présence en ligne",
+    "as24_sub": "Notre présence en ligne",
     "as24_title": "Sur AutoScout24 avec d'excellentes évaluations",
-    "as24_desc": "Sur AutoScout24, vous trouverez mon profil complet, toutes les annonces actuelles et les avis clients. La transparence est importante pour moi.",
+    "as24_desc": "Sur AutoScout24, vous trouverez notre profil complet, toutes les annonces actuelles et les avis clients. La transparence est importante pour nous.",
     "as24_button": "Voir le profil sur AutoScout24",
     "ratings": "Évaluations",
     "cta_title": "Intéressé par un véhicule ?",
-    "cta_desc": "Contactez-moi directement – je me réjouis de votre message.",
+    "cta_desc": "Contactez-nous directement – nous nous réjouissons de votre message.",
     "cta_button": "Prendre contact maintenant"
   },
   "history": {
     "sub": "Transparence et confiance",
     "title": "Historique des véhicules",
-    "desc": "Un regard en arrière – les véhicules qui sont passés entre mes mains au fil des années. Qualité et soin pour chacun.",
+    "desc": "Un regard en arrière – les véhicules qui sont passés entre nos mains au fil des années. Qualité et soin pour chacun.",
     "loading": "Chargement des images …",
     "empty": "Aucune image encore téléchargée.",
     "empty_hint": "Les images peuvent être ajoutées via {{link}}.",
@@ -95,15 +95,15 @@
     "cta_button": "Annonces actuelles sur AutoScout24"
   },
   "contact": {
-    "sub": "Je me réjouis de votre message",
+    "sub": "Nous nous réjouissons de votre message",
     "title": "Contact",
-    "reach_title": "Comment me joindre",
+    "reach_title": "Comment nous joindre",
     "phone_label": "Téléphone & E-Mail",
     "online_label": "En ligne",
     "as24_sub": "Réponse la plus rapide",
     "as24_title": "Directement via AutoScout24",
-    "as24_desc": "Le moyen le plus rapide de me contacter est de passer par l'annonce spécifique sur AutoScout24. Vous pouvez également y voir tous les détails du véhicule.",
-    "as24_button": "Mon profil AutoScout24",
+    "as24_desc": "Le moyen le plus rapide de nous contacter est de passer par l'annonce spécifique sur AutoScout24. Vous pouvez également y voir tous les détails du véhicule.",
+    "as24_button": "Notre profil AutoScout24",
     "form_title": "Envoyer une demande",
     "name": "Nom",
     "phone": "Téléphone",
@@ -116,7 +116,7 @@
     "privacy_link": "politique de confidentialité",
     "submit": "Envoyer le message",
     "success_title": "Merci beaucoup !",
-    "success_text": "J'ai reçu votre message et vous répondrai dès que possible."
+    "success_text": "Nous avons reçu votre message et vous répondrons dès que possible."
   },
   "footer": {
     "desc": "Commerce de véhicules sérieux avec des voitures d'occasion de haute qualité. La transparence, la qualité et le service personnel sont notre priorité.",

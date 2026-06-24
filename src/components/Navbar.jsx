@@ -48,7 +48,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo / Brand */}
-        <Link to="/" className="flex items-center">
+        <Link
+          to="/"
+          className="flex items-center"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <img
             src={logo}
             alt="Patrick Bang KFZ-Handel"

@@ -29,7 +29,7 @@
     "reviews_sub": "Reseñas AutoScout24",
     "reviews_link": "Leer todas las reseñas en AutoScout24",
     "cta_title": "¿Interesado?",
-    "cta_text": "Contácteme directamente – respondo a todas las preguntas de forma personal y sin complicaciones.",
+    "cta_text": "Contáctenos directamente – respondemos a todas las preguntas de forma personal y sin complicaciones.",
     "cta_contact": "Ponerse en contacto",
     "cta_open": "Abrir AutoScout24"
   },
@@ -64,29 +64,29 @@
     }
   },
   "about": {
-    "sub": "Quién soy",
+    "sub": "Quiénes somos",
     "title": "Sobre nosotros",
-    "values_sub": "Lo que me distingue",
-    "values_title": "Mis principios",
+    "values_sub": "Lo que nos distingue",
+    "values_title": "Nuestros principios",
     "values": {
       "transparency": { "title": "Transparencia", "desc": "Todos los vehículos se describen de forma honesta y completa. Sin defectos ocultos, sin sorpresas." },
       "quality": { "title": "Calidad", "desc": "Solo vehículos cuidadosamente seleccionados y verificados – preferiblemente vehículos del año con bajo kilometraje." },
-      "contact": { "title": "Contacto personal", "desc": "Habla directamente conmigo, no con un centro de llamadas anónimo. Las preguntas se responden de forma abierta y honesta." },
-      "price": { "title": "Precios justos", "desc": "Precios de mercado sin exageraciones. Lo que ofrezco es proporcional a la calidad del vehículo." }
+      "contact": { "title": "Contacto personal", "desc": "Habla directamente con nosotros, no con un centro de llamadas anónimo. Las preguntas se responden de forma abierta y honesta." },
+      "price": { "title": "Precios justos", "desc": "Precios de mercado sin exageraciones. Lo que ofrecemos es proporcional a la calidad del vehículo." }
     },
-    "as24_sub": "Mi presencia online",
+    "as24_sub": "Nuestra presencia online",
     "as24_title": "En AutoScout24 con excelentes valoraciones",
-    "as24_desc": "En AutoScout24 encontrará mi perfil completo, todos los anuncios actuales y reseñas de clientes reales. La transparencia es importante para mí.",
+    "as24_desc": "En AutoScout24 encontrará nuestro perfil completo, todos los anuncios actuales y reseñas de clientes reales. La transparencia es importante para nosotros.",
     "as24_button": "Ver perfil en AutoScout24",
     "ratings": "Valoraciones",
     "cta_title": "¿Interesado en un vehículo?",
-    "cta_desc": "Contácteme directamente – estaré encantado de recibir su mensaje.",
+    "cta_desc": "Contáctenos directamente – estaremos encantados de recibir su mensaje.",
     "cta_button": "Contactar ahora"
   },
   "history": {
     "sub": "Transparencia y confianza",
     "title": "Historial de vehículos",
-    "desc": "Una mirada atrás – vehículos que han pasado por mis manos a lo largo de los años. Calidad y cuidado en cada uno.",
+    "desc": "Una mirada atrás – vehículos que han pasado por nuestras manos a lo largo de los años. Calidad y cuidado en cada uno.",
     "loading": "Cargando imágenes …",
     "empty": "Aún no se han subido imágenes.",
     "empty_hint": "Las imágenes se pueden añadir a través de {{link}}.",
@@ -95,15 +95,15 @@
     "cta_button": "Anuncios actuales en AutoScout24"
   },
   "contact": {
-    "sub": "Estoy encantado de recibir su mensaje",
+    "sub": "Estamos encantados de recibir su mensaje",
     "title": "Contacto",
-    "reach_title": "Cómo contactarme",
+    "reach_title": "Cómo contactarnos",
     "phone_label": "Teléfono & E-Mail",
     "online_label": "Online",
     "as24_sub": "Respuesta más rápida",
     "as24_title": "Directamente a través de AutoScout24",
-    "as24_desc": "La forma más rápida de contactarme es a través del anuncio específico en AutoScout24. También puede ver todos los detalles del vehículo allí.",
-    "as24_button": "Mi perfil de AutoScout24",
+    "as24_desc": "La forma más rápida de contactarnos es a través del anuncio específico en AutoScout24. También puede ver todos los detalles del vehículo allí.",
+    "as24_button": "Nuestro perfil de AutoScout24",
     "form_title": "Enviar solicitud",
     "name": "Nombre",
     "phone": "Teléfono",
@@ -116,7 +116,7 @@
     "privacy_link": "política de privacidad",
     "submit": "Enviar mensaje",
     "success_title": "¡Muchas gracias!",
-    "success_text": "He recibido su mensaje y me pondré en contacto con usted lo antes posible."
+    "success_text": "Hemos recibido su mensaje y nos pondremos en contacto con usted lo antes posible."
   },
   "footer": {
     "desc": "Comercio de vehículos serio con coches de segunda mano de alta calidad. La transparencia, la calidad y el servicio personal son nuestra prioridad.",

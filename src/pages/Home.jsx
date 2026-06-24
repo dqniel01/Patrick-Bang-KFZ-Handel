@@ -68,9 +68,6 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
           <div className="w-full">
-            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.05] mb-10">
-              {t('home.headline')}
-            </h1>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/fahrzeuge" className="px-8 py-3.5 bg-white text-gray-900 font-semibold text-sm tracking-wide hover:bg-gray-100 transition-colors">
                 {t('home.cta_vehicles')}
